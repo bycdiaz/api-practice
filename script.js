@@ -1,6 +1,7 @@
 const retrieveGif = () => {
   const img = document.querySelector('img');
   const refreshButton = document.querySelector('.refresh-button');
+  const errorElement = document.querySelector('.error');
 
   const setURL = (searchInput) => {
     let url = '';
@@ -17,8 +18,9 @@ const retrieveGif = () => {
       .then((response) => response.json())
       .then((response) => {
         img.src = response.data.images.original.url;
-      }).catch((error) => {
-        console.log('None Found');
+        errorElement.style.display = 'none';
+      }).catch(() => {
+        errorElement.style.display = 'block';
       });
   };
 

@@ -13,3 +13,10 @@
 .refresh-button:hover {
   box-shadow: 4px 4px 3px grey;
 }
+
+.error {
+  display: none;
+  background-color: rgb(129, 40, 40);
+  padding: 5px 5px;
+  border-radius: 5px;
+}
