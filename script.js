@@ -17,6 +17,8 @@ const retrieveGif = () => {
       .then((response) => response.json())
       .then((response) => {
         img.src = response.data.images.original.url;
+      }).catch((error) => {
+        console.log('None Found');
       });
   };
 
