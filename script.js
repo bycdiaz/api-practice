@@ -13,16 +13,17 @@ const retrieveGif = () => {
     return url;
   };
 
-  const retrieveImage = (url) => {
-    fetch(url, { mode: 'cors' })
-      .then((response) => response.json())
-      .then((response) => {
-        img.src = response.data.images.original.url;
-        errorElement.style.display = 'none';
-      }).catch(() => {
-        errorElement.style.display = 'block';
-      });
-  };
+  async function retrieveImage(url) {
+    const response = await fetch(url, { mode: 'cors' });
+    const gifData = await response.json();
+
+    if (gifData) {
+      img.src = gifData.data.images.original.url;
+      errorElement.style.display = 'none';
+    } else {
+      errorElement.style.display = 'block';
+    }
+  }
 
   const userInput = () => {
     const searchButton = document.querySelector('.search');
